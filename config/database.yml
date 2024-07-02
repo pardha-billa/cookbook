@@ -1,0 +1,23 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+
+development:
+  <<: *default
+  database: cookbook
+
+test:
+  <<: *default
+  database: cookbook
+
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  user: <%= Rails.application.credentials.pg_production_user %>
+  password: <%= Rails.application.credentials.pg_production_password %>
+  pool: 5
+  database: reporter3_production
+
+
